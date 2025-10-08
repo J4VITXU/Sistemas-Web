@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sidebar Layout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.content-wrapper{ display:flex; min-height:60vh; } /*viewport height - 60% of the height o.sidebar{ flex:0 0 250px; background:#f0f0f0; padding:1rem; }
+/* flex: 0 0 250px;
+- flex-grow: 0 - it won’t expand larger.
+- flex-shrink: 0 - it won’t shrink smaller.
+- flex-basis: 250px - fixed width of 250px. */
+.main{ flex:1 1 0; padding:1rem; }
+/* flex: 1 1 0;:
+- flex-grow: 1 - it expands to take up all available space.
+- flex-shrink: 1 - it can shrink if space is tight.
+- flex-basis: 0 - starting point is 0, so it fully depends on available space. */
+</style>
+</head>
+<body>
+    <div class="content-wrapper">
+    <aside class="sidebar">Sidebar...</aside>
+    <main class="main">Main content...</main>   
+    </div>
+</body>
+</html>
