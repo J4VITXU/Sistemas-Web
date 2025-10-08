@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Javier Gallardo - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    img {
+      max-width: 300px;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    /* HERO */
+    #hero {
+      width: 1000px;
+      background: #fff;
+      padding: 96px 80px;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      margin: 0 auto;
+      text-align: justify;
+    }
+
+    #hero img {
+      box-shadow: 30px 30px 0 #eee;
+      border: 9px solid #ffffff;
+    }
+
+    .chip,
+    .chip2 {
+      display: inline-block;
+      background: #d9d9d9;
+      color: #111;
+      padding: 6px 16px;
+      border-radius: 999px;
+
+    }
+
+
+
+    .chip {
+      margin-bottom: 48px;
+    }
+
+    .chip2 {
+      margin-bottom: 16px;
+    }
+
+    /* ABOUT */
+    #about {
+      background: #e0e0e0;
+      padding: 96px 80px;
+      text-align: center;
+    }
+
+    #about img {
+      box-shadow: -30px 30px 0 #c8c7c7;
+      border: 9px solid #e0e0e0;
+    }
+
+    .nav-container {
+      max-width: 90%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 150px;
+    }
+
+    /* SKILLS */
+    #skills {
+      background-color: white;
+      padding: 96px 80px;
+      text-align: center;
+    }
+
+    .skills-grid {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px 48px;
+    }
+
+    .skill {
+      width: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .skill img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+    }
+
+    .skill p {
+      margin: 0;
+    }
+
+    /* EXPERIENCE */
+    #experience {
+      background: #e0e0e0;
+      max-width: 100%;
+      text-align:
+        center;
+      padding: 96px 80px;
+    }
+
+    .main-box {
+      width: 900px;
+      margin: 48px auto;
+      padding: 32px 32px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      column-gap: 100px;
+      align-items: start;
+      text-align: left;
+    }
+
+    .main-box .logo {
+      width: 100px;
+    }
+
+    .main-box .content h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .main-box .content ul {
+      padding-left: 20px;
+    }
+
+    .main-box .content li {
+      margin: 6px 0;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+
+    .main-box .date {
+      white-space: nowrap;
+      color: #6b7280;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* WORK */
+    #work {
+      background: #ffffff;
+      max-width: 100%;
+      text-align: center;
+      padding: 96px 80px;
+    }
+
+    /* TESTIMONIALS */
+    #testimonials {
+      background: #e0e0e0;
+      max-width: 100%;
+      text-align: center;
+      padding: 96px 80px;
+      position: relative;
+    }
+
+    .t-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #111827;
+      margin-top: 0px;
+      margin-bottom: 48px;
+    }
+
+    .testimonials-grid {
+      width: 100%;
+      max-width: 1100px;
+      margin: 32px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+      text-align: justify;
+    }
+
+    .t-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #e9eef5;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      margin: 0 auto 16px;
+    }
+
+    .t-quote {
+      color: #374151;
+      line-height: 1.7;
+      margin: 0 0 20px;
+    }
+
+    .t-name {
+      font-weight: 800;
+      color: #111827;
+      margin: 0 0 4px;
+      text-align: center;
+    }
+
+    .t-role {
+      color: #6b7280;
+      font-size: 14px;
+      text-align: center;
+      margin: 0;
+    }
+
+
+    #contact {
+      background: #fff;
+      padding: 96px 80px;
+      text-align: center;
+    }
+
+    .c-email {
+      margin-top: 48px;
+      margin-bottom: 16px;
+      color: #111;
+      font-size: 30px;
+    }
+
+    .c-phone {
+      margin-top: 0px;
+      margin-bottom: 48px;
+      color: #111;
+      font-size: 30px;
+    }
+
+    /* PLACEHOLDERS (Contact, Footer) */
+    /* FOOTER */
+    #footer {
+      padding: 24px 80px;
+      text-align: center;
+      background: #e0e0e0;
+      color: #4b5563;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    #footer img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      display: inline-block;
+      /* evita que salte arriba */
+    }
+
+    .footer-divider {
+      width: 1px;
+      height: 16px;
+      background: #cfd5db;
+    }
+
+    #footer u {
+      text-underline-offset: 2px;
+    }
+
+    .footer-heart {
+      color: #ef4444;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HERO -->
+  <section id="hero" aria-label="Hero">
+    <div class="text">
+      <h1>Hi, I'm Javier Gallardo👋</h1>
+      <p>Soy un estudiante de ingeniería informática e inteligencia artificial. Estoy en tercero de carrera y tengo 20
+        años.</p>
+      <p style="margin-top: 50px">📍 Zaragoza</p>
+      <p>🟢 Available for new projects.</p>
+    </div>
+    <img
+      src="https://static.wikia.nocookie.net/inazuma-eleven-the-scales-of-ares/images/b/bd/Mark_Evans_Inazuma_Japon.png/revision/latest?cb=20190219213025&path-prefix=es"
+      alt="Foto de Javier" />
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-label="About me">
+    <div class="chip">About me</div>
+    <div class="nav-container">
+      <img src="https://i.redd.it/po5nyh9h4pdb1.png" alt="Imagen About" />
+      <div class="text">
+        <p>
+          sinceramente no se que explicar aqui pero mola loooooooooooooooooooooooooooo lo ll oo looooooooooooooooooo l o
+          olk oksdkjgkdjgd gwsgrsdgsdgdsgx
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" aria-label="Skills">
+    <div class="chip2">Skills</div>
+    <div class="text">
+      <p style="margin: 0px 0px 48px;">The skills, tools and technologies I am really good at:</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+          alt="JavaScript">
+        <p>Javascript</p>
+      </div>
+      <div class="skill">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg"
+          alt="PostgreSQL">
+        <p>PostgreSQL</p>
+      </div>
+      <div class="skill">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg"
+          alt="MongoDB">
+        <p>MongoDB</p>
+      </div>
+      <div class="skill">
+        <img src="https://cdn-icons-png.flaticon.com/512/4149/4149675.png" alt="Big Data">
+        <p>Big Data</p>
+      </div>
+      <div class="skill">
+        <img src="https://cdn-icons-png.flaticon.com/512/1048/1048946.png" alt="Data Warehouses">
+        <p>Data Warehouses</p>
+      </div>
+      <div class="skill">
+        <img src="https://res-5.cloudinary.com/hbdyf1hp4/image/upload/q_auto/v1/images/pentaho-logo.png" alt="Pentaho">
+        <p>Pentaho</p>
+      </div>
+      <div class="skill">
+        <img src="https://avatars.githubusercontent.com/u/497012?s=280&v=4" alt="Anaconda">
+        <p>Anaconda</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" aria-label="Experience">
+    <div class="chip2">Experience</div>
+    <div class="text">
+      <p style="margin-top: 0px;">Here is a quick summary of my most recents experiences:</p>
+    </div>
+
+    <div class="main-box">
+      <img class="logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Upwork-logo.svg/1280px-Upwork-logo.svg.png"
+        alt="Upwork">
+      <div class="content">
+        <h3>Sr. Gallardo pizzero</h3>
+        <ul>
+          <li>Funciona</li>
+          <li>test linea 2</li>
+        </ul>
+      </div>
+      <div class="date">Nov 2021 - Present</div>
+    </div>
+
+    <div class="main-box">
+      <img class="logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Upwork-logo.svg/1280px-Upwork-logo.svg.png"
+        alt="Upwork">
+      <div class="content">
+        <h3>Sr. Gallardo developer</h3>
+        <ul>
+          <li>TEEEEEEEEEEESTEANDOOOOOOOOOOOOOOOOOO</li>
+        </ul>
+      </div>
+      <div class="date">Dec 2015 - May 2017</div>
+    </div>
+
+    <div class="main-box">
+      <img class="logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Upwork-logo.svg/1280px-Upwork-logo.svg.png"
+        alt="Upwork">
+      <div class="content">
+        <h3>Sr. Gallardo developer</h3>
+        <ul>
+          <li>TEEEEEEEEEEESTEANDOOOOOOOOOOOOOOOOOO</li>
+        </ul>
+      </div>
+      <div class="date">Dec 2015 - May 2017</div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" aria-label="Work">
+    <div class="chip2">Work</div>
+    <p style="margin-top: 0px;">Some of the notheworthy projects I have built:</p>
+    <!-- tu contenido aquí -->
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" aria-label="Testimonials">
+    <div class="chip2">Testimonials</div>
+    <p class="t-title">Nice things people have said about me:</p>
+
+    <div class="testimonials-grid">
+      <article class="testimonial-card">
+        <div class="t-avatar">👤</div>
+        <p class="t-quote">“Job well done! I am really impressed. He is very very good at what he does :) I would
+          recommend Javier and will rehire in the future for Frontend development.”</p>
+        <p class="t-name">John Doe</p>
+        <p class="t-role">Founder – xyz.com</p>
+      </article>
+
+      <article class="testimonial-card">
+        <div class="t-avatar">👤</div>
+        <p class="t-quote">“Great guy, highly recommended for any complex front-end development job! His skills are
+          top-notch and he will be an amazing addition to any team.”</p>
+        <p class="t-name">John Doe</p>
+        <p class="t-role">Founder – abc.com</p>
+      </article>
+
+      <article class="testimonial-card">
+        <div class="t-avatar">👤</div>
+        <p class="t-quote">“Javier fue facilísimo de tratar y se preocupó de que el proyecto saliera perfecto. Tiene un
+          nivel técnico alto y trabajó en mi app MERN sin ningún problema.”</p>
+        <p class="t-name">John Doe</p>
+        <p class="t-role">Freelancer</p>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- CONTACT (placeholder) -->
+  <section id="contact" aria-label="Contact me">
+    <div class="chip2">Get in touch</div>
+    <p style="margin-top: 0px;">What's next? Feel free to reach out to me if you're looking for <br> developer, have a
+      query, or simply want to connect.</p>
+    <div class="c-email">reachsagarshah@gmail.com</div>
+    <div class="c-phone">+91 8980500565</div>
+    <p>You may also find me on these platforms!</p>
+
+  </section>
+
+  <!-- FOOTER (placeholder) -->
+  <section id="footer" aria-label="Footer">
+    <div class="footer-row">
+      <img src="C:\Users\javit\Downloads\Icon.png">
+      <span>2023</span>
+      <span class="footer-divider"></span>
+      <span>Designed and <u>coded</u> with <span class="footer-heart">❤️</span> by Javier Gallardo</span>
+    </div>
+  </section>
+
+</body>
+
+</html>
