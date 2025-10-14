@@ -14,14 +14,14 @@
 
     /* HERO */
     #hero {
-      width: 1000px;
+      max-width: 100%;
       background: #fff;
       padding: 96px 80px;
+      margin: auto;
       display: flex;
       align-items: center;
-      gap: 50px;
-      margin: 0 auto;
       text-align: justify;
+      justify-content: space-between;
     }
 
     #hero img {
@@ -51,17 +51,17 @@
 
     /* ABOUT */
     #about {
-      background: #e0e0e0;
+      background: #f8f8f8;
       padding: 96px 80px;
       text-align: center;
     }
 
     #about img {
-      box-shadow: -30px 30px 0 #c8c7c7;
-      border: 9px solid #e0e0e0;
+      box-shadow: -30px 30px 0 #e0e0e0;
+      border: 9px solid #f8f8f8;
     }
 
-    .nav-container {
+    .about-container {
       max-width: 90%;
       margin: auto;
       display: flex;
@@ -105,15 +105,15 @@
 
     /* EXPERIENCE */
     #experience {
-      background: #e0e0e0;
+      background: #f8f8f8;
       max-width: 100%;
       text-align:
         center;
       padding: 96px 80px;
     }
 
-    .main-box {
-      width: 900px;
+    .experience-box {
+      width: 896px;
       margin: 48px auto;
       padding: 32px 32px;
       background: #fff;
@@ -126,28 +126,28 @@
       text-align: left;
     }
 
-    .main-box .logo {
+    .experience-box .logo {
       width: 100px;
     }
 
-    .main-box .content h3 {
+    .experience-box .content h3 {
       margin: 0 0 8px;
       font-size: 20px;
       font-weight: 700;
       color: #111827;
     }
 
-    .main-box .content ul {
+    .experience-box .content ul {
       padding-left: 20px;
     }
 
-    .main-box .content li {
+    .experience-box .content li {
       margin: 6px 0;
       color: #4b5563;
       line-height: 1.5;
     }
 
-    .main-box .date {
+    .experience-box .date {
       white-space: nowrap;
       color: #6b7280;
       font-weight: 600;
@@ -155,16 +155,96 @@
     }
 
     /* WORK */
-    #work {
-      background: #ffffff;
-      max-width: 100%;
-      text-align: center;
+    /* ======= PROJECTS ======= */
+    .projects-section {
+      background: #fff;
       padding: 96px 80px;
+      text-align: center;
+    }
+
+
+    .project-card {
+      max-width: 1152px;
+      margin: 48px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+    }
+
+    .project-media {
+      background: #f5f5f5;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .project-content {
+      background: #fff;
+      padding: 48px;
+      text-align: justify;
+    }
+
+    .project-content h3 {
+      margin: 0 0 10px;
+    }
+
+    .project-content p {
+      margin: 0 0 14px;
+      color: #475569;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 16px;
+    }
+
+    .badge {
+      background: #e5e7eb;
+      color: #374151;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .project-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: #0f172a;
+      text-decoration: none;
+    }
+
+    .project-links svg {
+      width: 18px;
+      height: 18px;
+      transition: transform .15s ease;
     }
 
     /* TESTIMONIALS */
     #testimonials {
-      background: #e0e0e0;
+      background: #f8f8f8;
       max-width: 100%;
       text-align: center;
       padding: 96px 80px;
@@ -182,7 +262,7 @@
     .testimonials-grid {
       width: 100%;
       max-width: 1100px;
-      margin: 32px auto 0;
+      margin: 0px auto 0px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
@@ -253,7 +333,7 @@
     #footer {
       padding: 24px 80px;
       text-align: center;
-      background: #e0e0e0;
+      background: #f8f8f8;
       color: #4b5563;
     }
 
@@ -261,8 +341,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
     }
 
     #footer img {
@@ -270,21 +348,10 @@
       height: 18px;
       object-fit: contain;
       display: inline-block;
-      /* evita que salte arriba */
-    }
-
-    .footer-divider {
-      width: 1px;
-      height: 16px;
-      background: #cfd5db;
     }
 
     #footer u {
       text-underline-offset: 2px;
-    }
-
-    .footer-heart {
-      color: #ef4444;
     }
   </style>
 </head>
@@ -307,7 +374,7 @@
   <!-- ABOUT -->
   <section id="about" aria-label="About me">
     <div class="chip">About me</div>
-    <div class="nav-container">
+    <div class="about-container">
       <img src="https://i.redd.it/po5nyh9h4pdb1.png" alt="Imagen About" />
       <div class="text">
         <p>
@@ -366,7 +433,7 @@
       <p style="margin-top: 0px;">Here is a quick summary of my most recents experiences:</p>
     </div>
 
-    <div class="main-box">
+    <div class="experience-box">
       <img class="logo"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Upwork-logo.svg/1280px-Upwork-logo.svg.png"
         alt="Upwork">
@@ -380,27 +447,27 @@
       <div class="date">Nov 2021 - Present</div>
     </div>
 
-    <div class="main-box">
+    <div class="experience-box">
       <img class="logo"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Upwork-logo.svg/1280px-Upwork-logo.svg.png"
         alt="Upwork">
       <div class="content">
         <h3>Sr. Gallardo developer</h3>
         <ul>
-          <li>TEEEEEEEEEEESTEANDOOOOOOOOOOOOOOOOOO</li>
+          <li>TEEEEEEEEEEESTEANDOO</li>
         </ul>
       </div>
       <div class="date">Dec 2015 - May 2017</div>
     </div>
 
-    <div class="main-box">
+    <div class="experience-box">
       <img class="logo"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Upwork-logo.svg/1280px-Upwork-logo.svg.png"
         alt="Upwork">
       <div class="content">
         <h3>Sr. Gallardo developer</h3>
         <ul>
-          <li>TEEEEEEEEEEESTEANDOOOOOOOOOOOOOOOOOO</li>
+          <li>TEEEEEEEEEEESTEANDOOOO</li>
         </ul>
       </div>
       <div class="date">Dec 2015 - May 2017</div>
@@ -408,10 +475,94 @@
   </section>
 
   <!-- WORK -->
-  <section id="work" aria-label="Work">
+
+  <div class="projects-section">
     <div class="chip2">Work</div>
-    <p style="margin-top: 0px;">Some of the notheworthy projects I have built:</p>
-    <!-- tu contenido aquí -->
+    <p style="margin: 0px auto;">Some of the notheworthy projects I have built:</p>
+
+    <div class="projects-list">
+
+      <!-- Card 1 (imagen izquierda) -->
+      <article class="project-card">
+        <div class="project-media">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
+            alt="Project 1">
+        </div>
+        <div class="project-content">
+          <h3>Fiskil</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec urna ac tellus volutpat viverra.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+          <div class="badges">
+            <span class="badge">React</span><span class="badge">Next.js</span><span class="badge">Typescript</span>
+            <span class="badge">PostgreSQL</span><span class="badge">Tailwindcss</span><span
+              class="badge">Cypress</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noreferrer noopener">
+              <!-- ↗ -->
+              <svg viewBox="0 0 24 24">
+                <path d="M7 17l10-10M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 (imagen derecha: invierte el orden en el DOM) -->
+      <article class="project-card">
+        <div class="project-content">
+          <h3>Fiskil</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec urna ac tellus volutpat viverra.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+          <div class="badges">
+            <span class="badge">React</span><span class="badge">Next.js</span><span class="badge">Typescript</span>
+            <span class="badge">PostgreSQL</span><span class="badge">Tailwindcss</span><span
+              class="badge">Cypress</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noreferrer noopener">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 17l10-10M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="project-media">
+          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1200&auto=format&fit=crop"
+            alt="Project 2">
+        </div>
+      </article>
+
+      <!-- Card 3 (imagen izquierda) -->
+      <article class="project-card">
+        <div class="project-media">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
+            alt="Project 3">
+        </div>
+        <div class="project-content">
+          <h3>Fiskil</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec urna ac tellus volutpat viverra.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+          <div class="badges">
+            <span class="badge">React</span><span class="badge">Next.js</span><span class="badge">Typescript</span>
+            <span class="badge">PostgreSQL</span><span class="badge">Tailwindcss</span><span
+              class="badge">Cypress</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noreferrer noopener">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 17l10-10M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
   </section>
 
   <!-- TESTIMONIALS -->
@@ -462,9 +613,7 @@
   <section id="footer" aria-label="Footer">
     <div class="footer-row">
       <img src="C:\Users\javit\Downloads\Icon.png">
-      <span>2023</span>
-      <span class="footer-divider"></span>
-      <span>Designed and <u>coded</u> with <span class="footer-heart">❤️</span> by Javier Gallardo</span>
+      <span>2025 | <u>Designed</u> and <u>coded</u> with ❤️ by Javier Gallardo</span>
     </div>
   </section>
 
