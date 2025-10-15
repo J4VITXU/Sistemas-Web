@@ -1,0 +1,185 @@
+/* ===== MÓVIL (<=600px) — solo overrides, no toca desktop ===== */
+@media (max-width: 600px) {
+
+    /* Reduce padding global de secciones en móvil */
+    #hero,
+    #about,
+    #skills,
+    #experience,
+    #work,
+    #testimonials,
+    #contact {
+        padding: 24px 16px !important;
+    }
+
+
+    /* HEADER */
+    .toolbar {
+        padding: 12px 16px !important;
+        gap: 8px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .right-side {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-size: 14px;
+    }
+
+    .actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    /* HERO */
+    #hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+    }
+
+
+
+    #hero .h-img1 {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        display: block;
+        box-shadow: none;
+        border-width: 6px;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .social-icons img {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* ABOUT */
+    #about .about-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    #about img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        display: block;
+        box-shadow: none;
+    }
+
+    #about .text {
+        text-align: center;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        justify-items: center;
+    }
+
+    /* EXPERIENCE */
+    .experience-box {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 10px;
+        align-items: start;
+    }
+
+    .experience-box .date {
+        grid-column: 1 / -1;
+        font-size: 14px;
+        opacity: .8;
+    }
+
+    .experience-box .logo{
+        max-width: 100%;
+    }
+
+    /* WORK / PROJECTS */
+    .projects-list {
+        display: grid;
+        gap: 16px;
+    }
+
+    .project-card {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .project-media img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .project-links img {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    /* CONTACT */
+    #contact .c-email,
+    #contact .c-phone,
+    #contact .c-platforms {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #contact p {
+        text-align: center;
+    }
+
+    /* FOOTER */
+    .footer-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        padding: 16px;
+    }
+}

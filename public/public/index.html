@@ -5,370 +5,71 @@
   <meta charset="UTF-8" />
   <title>Javier Gallardo - Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    img {
-      max-width: 300px;
-      height: auto;
-      border-radius: 6px;
-    }
-
-    /* HERO */
-    #hero {
-      max-width: 100%;
-      background: #fff;
-      padding: 96px 80px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      text-align: justify;
-      justify-content: space-between;
-    }
-
-    #hero img {
-      box-shadow: 30px 30px 0 #eee;
-      border: 9px solid #ffffff;
-    }
-
-    .chip,
-    .chip2 {
-      display: inline-block;
-      background: #d9d9d9;
-      color: #111;
-      padding: 6px 16px;
-      border-radius: 999px;
-
-    }
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="hero.css">
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="skills.css">
+  <link rel="stylesheet" href="experience.css">
+  <link rel="stylesheet" href="work.css">
+  <link rel="stylesheet" href="testimonial.css">
+  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="responsive.css">
 
 
-
-    .chip {
-      margin-bottom: 48px;
-    }
-
-    .chip2 {
-      margin-bottom: 16px;
-    }
-
-    /* ABOUT */
-    #about {
-      background: #f8f8f8;
-      padding: 96px 80px;
-      text-align: center;
-    }
-
-    #about img {
-      box-shadow: -30px 30px 0 #e0e0e0;
-      border: 9px solid #f8f8f8;
-    }
-
-    .about-container {
-      max-width: 90%;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 150px;
-    }
-
-    /* SKILLS */
-    #skills {
-      background-color: white;
-      padding: 96px 80px;
-      text-align: center;
-    }
-
-    .skills-grid {
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 32px 48px;
-    }
-
-    .skill {
-      width: 110px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .skill img {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-    }
-
-    .skill p {
-      margin: 0;
-    }
-
-    /* EXPERIENCE */
-    #experience {
-      background: #f8f8f8;
-      max-width: 100%;
-      text-align:
-        center;
-      padding: 96px 80px;
-    }
-
-    .experience-box {
-      width: 896px;
-      margin: 48px auto;
-      padding: 32px 32px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
-      display: grid;
-      grid-template-columns: 110px 1fr auto;
-      column-gap: 100px;
-      align-items: start;
-      text-align: left;
-    }
-
-    .experience-box .logo {
-      width: 100px;
-    }
-
-    .experience-box .content h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
-      font-weight: 700;
-      color: #111827;
-    }
-
-    .experience-box .content ul {
-      padding-left: 20px;
-    }
-
-    .experience-box .content li {
-      margin: 6px 0;
-      color: #4b5563;
-      line-height: 1.5;
-    }
-
-    .experience-box .date {
-      white-space: nowrap;
-      color: #6b7280;
-      font-weight: 600;
-      margin-top: 4px;
-    }
-
-    /* WORK */
-    /* ======= PROJECTS ======= */
-    .projects-section {
-      background: #fff;
-      padding: 96px 80px;
-      text-align: center;
-    }
-
-
-    .project-card {
-      max-width: 1152px;
-      margin: 48px auto;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border: 1px solid #e5e7eb;
-      overflow: hidden;
-    }
-
-    .project-media {
-      background: #f5f5f5;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .project-media img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      display: block;
-    }
-
-    .project-content {
-      background: #fff;
-      padding: 48px;
-      text-align: justify;
-    }
-
-    .project-content h3 {
-      margin: 0 0 10px;
-    }
-
-    .project-content p {
-      margin: 0 0 14px;
-      color: #475569;
-    }
-
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 10px 0 16px;
-    }
-
-    .badge {
-      background: #e5e7eb;
-      color: #374151;
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .project-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      color: #0f172a;
-      text-decoration: none;
-    }
-
-    .project-links svg {
-      width: 18px;
-      height: 18px;
-      transition: transform .15s ease;
-    }
-
-    /* TESTIMONIALS */
-    #testimonials {
-      background: #f8f8f8;
-      max-width: 100%;
-      text-align: center;
-      padding: 96px 80px;
-      position: relative;
-    }
-
-    .t-title {
-      font-size: 22px;
-      font-weight: 600;
-      color: #111827;
-      margin-top: 0px;
-      margin-bottom: 48px;
-    }
-
-    .testimonials-grid {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0px auto 0px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .testimonial-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
-      text-align: justify;
-    }
-
-    .t-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: #e9eef5;
-      display: grid;
-      place-items: center;
-      font-size: 28px;
-      margin: 0 auto 16px;
-    }
-
-    .t-quote {
-      color: #374151;
-      line-height: 1.7;
-      margin: 0 0 20px;
-    }
-
-    .t-name {
-      font-weight: 800;
-      color: #111827;
-      margin: 0 0 4px;
-      text-align: center;
-    }
-
-    .t-role {
-      color: #6b7280;
-      font-size: 14px;
-      text-align: center;
-      margin: 0;
-    }
-
-
-    #contact {
-      background: #fff;
-      padding: 96px 80px;
-      text-align: center;
-    }
-
-    .c-email {
-      margin-top: 48px;
-      margin-bottom: 16px;
-      color: #111;
-      font-size: 30px;
-    }
-
-    .c-phone {
-      margin-top: 0px;
-      margin-bottom: 48px;
-      color: #111;
-      font-size: 30px;
-    }
-
-    /* PLACEHOLDERS (Contact, Footer) */
-    /* FOOTER */
-    #footer {
-      padding: 24px 80px;
-      text-align: center;
-      background: #f8f8f8;
-      color: #4b5563;
-    }
-
-    .footer-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #footer img {
-      width: 18px;
-      height: 18px;
-      object-fit: contain;
-      display: inline-block;
-    }
-
-    #footer u {
-      text-underline-offset: 2px;
-    }
-  </style>
 </head>
 
 <body>
+  <header class="toolbar">
+    <div class="logo">&lt;JG/&gt;</div>
+
+    <div class="right-side">
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <button class="theme-btn" aria-label="Toggle theme">
+          <img src="Icon Button.png" alt="Theme icon" />
+        </button>
+        <a href="#" class="btn">Download CV</a>
+      </div>
+    </div>
+  </header>
+
+
+
   <!-- HERO -->
   <section id="hero" aria-label="Hero">
     <div class="text">
       <h1>Hi, I'm Javier Gallardo👋</h1>
-      <p>Soy un estudiante de ingeniería informática e inteligencia artificial. Estoy en tercero de carrera y tengo 20
+      <p style="margin: 0px;">Soy un estudiante de ingeniería informática e inteligencia artificial. Estoy en tercero de
+        carrera y tengo 20
         años.</p>
-      <p style="margin-top: 50px">📍 Zaragoza</p>
-      <p>🟢 Available for new projects.</p>
+      <p style="margin: 48px 0px 8px">📍 Zaragoza</p>
+      <p style="margin:0px 0px 48px;">🟢 Available for new projects.</p>
+      <div class="social-icons">
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+          <img src="gato icon.png" alt="GitHub">
+        </a>
+        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+          <img src="twitter icon.png" alt="Twitter">
+        </a>
+        <a href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">
+          <img src="ns icon.png" alt="Behance">
+        </a>
+      </div>
+
     </div>
-    <img
-      src="https://static.wikia.nocookie.net/inazuma-eleven-the-scales-of-ares/images/b/bd/Mark_Evans_Inazuma_Japon.png/revision/latest?cb=20190219213025&path-prefix=es"
-      alt="Foto de Javier" />
+    <div class="h-img1">
+      <img
+        src="https://static.wikia.nocookie.net/inazuma-eleven-the-scales-of-ares/images/b/bd/Mark_Evans_Inazuma_Japon.png/revision/latest?cb=20190219213025&path-prefix=es"
+        alt="Foto de Javier" />
+    </div>
+
   </section>
 
   <!-- ABOUT -->
@@ -475,8 +176,7 @@
   </section>
 
   <!-- WORK -->
-
-  <div class="projects-section">
+  <section id="work">
     <div class="chip2">Work</div>
     <p style="margin: 0px auto;">Some of the notheworthy projects I have built:</p>
 
@@ -485,8 +185,7 @@
       <!-- Card 1 (imagen izquierda) -->
       <article class="project-card">
         <div class="project-media">
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
-            alt="Project 1">
+          <img src="Picture.png">
         </div>
         <div class="project-content">
           <h3>Fiskil</h3>
@@ -499,15 +198,13 @@
           </div>
           <div class="project-links">
             <a href="#" target="_blank" rel="noreferrer noopener">
-              <!-- ↗ -->
-              <svg viewBox="0 0 24 24">
-                <path d="M7 17l10-10M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+              <img src="redirect icon.png" alt="Redirect icon">
+
             </a>
           </div>
         </div>
       </article>
+
 
       <!-- Card 2 (imagen derecha: invierte el orden en el DOM) -->
       <article class="project-card">
@@ -522,24 +219,21 @@
           </div>
           <div class="project-links">
             <a href="#" target="_blank" rel="noreferrer noopener">
-              <svg viewBox="0 0 24 24">
-                <path d="M7 17l10-10M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+              <img src="redirect icon.png" alt="Redirect icon">
+
             </a>
           </div>
         </div>
         <div class="project-media">
-          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1200&auto=format&fit=crop"
-            alt="Project 2">
+          <img src="Picture.png">
+
         </div>
       </article>
 
       <!-- Card 3 (imagen izquierda) -->
       <article class="project-card">
         <div class="project-media">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
-            alt="Project 3">
+          <img src="Picture.png">
         </div>
         <div class="project-content">
           <h3>Fiskil</h3>
@@ -552,18 +246,17 @@
           </div>
           <div class="project-links">
             <a href="#" target="_blank" rel="noreferrer noopener">
-              <svg viewBox="0 0 24 24">
-                <path d="M7 17l10-10M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+              <img src="redirect icon.png" alt="Redirect icon">
+
             </a>
           </div>
         </div>
       </article>
 
     </div>
-  </div>
+    </div>
   </section>
+
 
   <!-- TESTIMONIALS -->
   <section id="testimonials" aria-label="Testimonials">
@@ -576,7 +269,7 @@
         <p class="t-quote">“Job well done! I am really impressed. He is very very good at what he does :) I would
           recommend Javier and will rehire in the future for Frontend development.”</p>
         <p class="t-name">John Doe</p>
-        <p class="t-role">Founder – xyz.com</p>
+        <p class="t-role">Founder - xyz.com</p>
       </article>
 
       <article class="testimonial-card">
@@ -584,7 +277,7 @@
         <p class="t-quote">“Great guy, highly recommended for any complex front-end development job! His skills are
           top-notch and he will be an amazing addition to any team.”</p>
         <p class="t-name">John Doe</p>
-        <p class="t-role">Founder – abc.com</p>
+        <p class="t-role">Founder - abc.com</p>
       </article>
 
       <article class="testimonial-card">
@@ -601,18 +294,43 @@
   <!-- CONTACT (placeholder) -->
   <section id="contact" aria-label="Contact me">
     <div class="chip2">Get in touch</div>
-    <p style="margin-top: 0px;">What's next? Feel free to reach out to me if you're looking for <br> developer, have a
+    <p style="margin: 0px;">What's next? Feel free to reach out to me if you're looking for <br> developer, have a
       query, or simply want to connect.</p>
-    <div class="c-email">reachsagarshah@gmail.com</div>
-    <div class="c-phone">+91 8980500565</div>
-    <p>You may also find me on these platforms!</p>
+    <div class="c-email">
+      <img src="correo icon.png">
+      <p>reachsagarshah@gmail.com</p>
+      <img src="copy icon.png">
+
+    </div>
+
+    <div class="c-phone">
+      <img src="telefono icon.png">
+      <p>+91 8980500565</p>
+      <img src="copy icon.png">
+    </div>
+    <p style="margin: 0px;">You may also find me on these platforms!</p>
+    <div class="c-platforms">
+
+      <div class="social-icons">
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+          <img src="gato icon.png" alt="GitHub">
+        </a>
+        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+          <img src="twitter icon.png" alt="Twitter">
+        </a>
+        <a href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">
+          <img src="ns icon.png" alt="Behance">
+        </a>
+      </div>
+    </div>
+
 
   </section>
 
   <!-- FOOTER (placeholder) -->
   <section id="footer" aria-label="Footer">
     <div class="footer-row">
-      <img src="C:\Users\javit\Downloads\Icon.png">
+      <img src="C icon.png" style="padding-right: 8px;">
       <span>2025 | <u>Designed</u> and <u>coded</u> with ❤️ by Javier Gallardo</span>
     </div>
   </section>

@@ -1,0 +1,81 @@
+/* WORK */
+/* ======= PROJECTS ======= */
+#work{
+    padding: 96px 80px;
+    text-align: center;
+    background: #fff;
+}
+
+.project-card {
+    max-width: 80%;
+    margin: 48px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.project-media {
+    background: #f5f5f5;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.project-content {
+    background: #fff;
+    padding: 48px;
+    text-align: justify;
+}
+
+.project-content h3 {
+    margin: 0 0 10px;
+}
+
+.project-content p {
+    margin: 0 0 14px;
+    color: #475569;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+}
+
+.badge {
+    background: #e5e7eb;
+    color: #374151;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.project-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #0f172a;
+    text-decoration: none;
+}
+

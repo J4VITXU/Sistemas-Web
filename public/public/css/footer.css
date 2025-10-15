@@ -1,0 +1,26 @@
+
+/* PLACEHOLDERS (Contact, Footer) */
+/* FOOTER */
+#footer {
+    padding: 24px 80px;
+    text-align: center;
+    background: #f8f8f8;
+    color: #4b5563;
+}
+
+.footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#footer img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: inline-block;
+}
+
+#footer u {
+    text-underline-offset: 2px;
+}

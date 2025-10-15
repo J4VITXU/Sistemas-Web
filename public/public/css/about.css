@@ -1,0 +1,21 @@
+
+/* ABOUT */
+#about {
+    background: #f8f8f8;
+    padding: 96px 80px;
+    text-align: center;
+}
+
+#about img {
+    box-shadow: -30px 30px 0 #e0e0e0;
+    border: 9px solid #f8f8f8;
+}
+
+.about-container {
+    max-width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 150px;
+}

@@ -1,0 +1,50 @@
+
+/* EXPERIENCE */
+#experience {
+    background: #f8f8f8;
+    max-width: 100%;
+    text-align:
+        center;
+    padding: 96px 80px;
+}
+
+.experience-box {
+    width: 80%;
+    margin: 48px auto;
+    padding: 32px 32px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    column-gap: 100px;
+    align-items: start;
+    text-align: left;
+}
+
+.experience-box .logo {
+    width: 100px;
+}
+
+.experience-box .content h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.experience-box .content ul {
+    padding-left: 20px;
+}
+
+.experience-box .content li {
+    margin: 6px 0;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.experience-box .date {
+    color: #6b7280;
+    font-weight: 600;
+}
+

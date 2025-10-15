@@ -1,0 +1,54 @@
+/* CONTACT */
+#contact {
+    background: #fff;
+    padding: 96px 80px;
+    text-align: center;
+}
+
+.c-email {
+    display: flex;
+    justify-content: center;
+    /* <— centra horizontal */
+    align-items: center;
+    gap: 8px;
+    margin: 48px 20px 16px;
+    color: #111;
+    font-size: 30px;
+}
+
+.c-email p {
+    margin: 0;
+}
+
+.c-email img {
+    width: 32px;
+    height: 32px;
+}
+
+.c-phone {
+    display: flex;
+    justify-content: center;
+    /* <— centra horizontal */
+    align-items: center;
+    gap: 8px;
+    margin: 0px 20px 48px;
+    color: #111;
+    font-size: 30px;
+}
+
+.c-phone p {
+    margin: 0;
+}
+
+.c-phone img {
+    width: 32px;
+    height: 32px;
+}
+
+.c-platforms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+}
