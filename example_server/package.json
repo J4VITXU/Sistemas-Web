@@ -1,0 +1,22 @@
+{
+  "name": "static-web-server",
+  "version": "1.0.0",
+  "description": "A simple Node.js static web server implementation",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "web-server",
+    "static",
+    "nodejs",
+    "http",
+    "educational"
+  ],
+  "author": "Jorge Martinez",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
