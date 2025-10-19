@@ -16,6 +16,7 @@
     margin: auto;
     display: flex;
     align-items: center;
+    text-align: justify;
     justify-content: space-between;
     gap: 150px;
 }
