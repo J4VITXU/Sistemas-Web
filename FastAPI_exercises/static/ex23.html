@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 23</title>
+</head>
+<body>
+
+<h1>Lista de usuarios</h1>
+
+<button onclick="loadUsers()">Cargar usuarios</button>
+
+<ul id="users-list"></ul>
+
+<script>
+async function loadUsers() {
+    const res = await fetch("/users");
+    const data = await res.json();
+
+    const list = document.getElementById("users-list");
+    list.innerHTML = "";
+
+    data.forEach(user => {
+        const li = document.createElement("li");
+        li.textContent = `${user.id} — ${user.name}`;
+        list.appendChild(li);
+    });
+}
+</script>
+
+</body>
+</html>
