@@ -1,0 +1,167 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.hero-admin-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  font-family: system-ui, -apple-system, sans-serif;
+  text-align: left;
+}
+
+.hero-admin-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero-admin-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.hero-create-section {
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.hero-list-section {
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.hero-create-section h2,
+.hero-list-section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.hero-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.hero-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 500;
+}
+
+.hero-form input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.hero-form button {
+  padding: 0.6rem 1rem;
+  margin-top: 0.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hero-form button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.hero-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.hero-load-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.hero-load-section button {
+  padding: 0.6rem 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hero-load-section button:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.hero-load-section button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.hero-loading-text {
+  font-style: italic;
+  color: #666;
+}
+
+.hero-error {
+  color: #dc3545;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.hero-success {
+  color: #28a745;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.hero-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-list-item {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.hero-list-item strong {
+  font-size: 1.1rem;
+}
+
+.hero-list-item small {
+  color: #666;
+  margin-left: 0.5rem;
+}
+
+.hero-list-item div {
+  margin-top: 0.25rem;
+  color: #555;
+}
+
+.hero-list-empty {
+  color: #999;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .hero-admin-layout {
+    grid-template-columns: 1fr;
+  }
+}
