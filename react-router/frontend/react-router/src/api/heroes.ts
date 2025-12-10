@@ -35,6 +35,20 @@ export async function createHero(hero: HeroCreate): Promise<Hero> {
   return response.json();
 }
 
+export async function updateHero(heroId: number, hero: HeroCreate): Promise<Hero> {
+  const response = await fetch(`${API_BASE_URL}/heroes/${heroId}`, {
+    method: "PATCH", // Use PATCH for partial updates or PUT for full updates
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(hero),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to update hero");
+  }
+  return response.json();
+}
+
 export async function deleteHero(heroId: number): Promise<void> {
   const response = await fetch(`${API_BASE_URL}/heroes/${heroId}`, {
     method: "DELETE",

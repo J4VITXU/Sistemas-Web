@@ -28,6 +28,10 @@ export default function Layout() {
           <NavLink to="/delete" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             Delete
           </NavLink>
+
+          <NavLink to="/update" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+            Update
+          </NavLink>
         </nav>
       </header>
       <main className="main">
