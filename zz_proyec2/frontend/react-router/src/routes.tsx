@@ -1,0 +1,50 @@
+import Layout from "./components/Layout";
+
+import Home from "./pages/Home";
+import DisplayProduct from "./pages/DisplayProducts";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import Login from "./pages/Login";
+import SingUp from "./pages/SingUp";
+import Orders from "./pages/Orders";
+
+/**
+ * Route configuration for React Router.
+ * Uses Layout as a wrapper and renders pages inside <Outlet />
+ */
+export const routes = [
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "singup", // mantenemos tu nombre
+        element: <SingUp />,
+      },
+      {
+        path: "products/:id",
+        element: <DisplayProduct />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
+      },
+      {
+        path: "orders",
+        element: <Orders />,
+      },
+    ],
+  },
+];
