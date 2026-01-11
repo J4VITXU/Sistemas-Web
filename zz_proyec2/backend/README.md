@@ -52,6 +52,16 @@ This script:
 - Prevents duplicates using the slug field
 - Can be executed multiple times safely
 
+Note: the seed script only inserts products if they do not already exist.
+If a product with the same slug is already present in the database, it will not be updated.
+
+To fully reset product stock and data, delete the database file and run the seed again:
+```bash
+rm app/database.db
+fastapi dev app/main.py
+python seed_products.py
+```
+
 ### Authentication
 
 The API uses JWT (Bearer Token) authentication.
