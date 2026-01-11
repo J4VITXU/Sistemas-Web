@@ -97,3 +97,12 @@ The project is intended for local development and educational purposes.
 The backend uses SQLite for simplicity.
 Business logic and validation are handled server-side.
 Frontend and backend are developed as independent applications.
+
+## Demo user credentials
+
+For testing and demonstration purposes, a user account is already created:
+
+- **Email:** pepe@gmail.com  
+- **Password:** 1234
+
+These credentials can be used to log in and test authenticated features such as checkout and order history.

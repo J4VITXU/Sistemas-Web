@@ -42,18 +42,23 @@ products_data = [
 def seed_products():
     with Session(engine) as session:
         for data in products_data:
-            exists = session.exec(
+            product = session.exec(
                 select(Product).where(Product.slug == data["slug"])
             ).first()
-            if exists:
-                continue
 
-            product = Product(**data)
-            session.add(product)
+            if product:
+                # UPDATE existing
+                product.title = data["title"]
+                product.description = data["description"]
+                product.price_cents = data["price_cents"]
+                product.currency = data["currency"]
+                product.stock = data["stock"]
+            else:
+                # INSERT new
+                session.add(Product(**data))
 
         session.commit()
 
-
 if __name__ == "__main__":
     seed_products()
-    print("✅ Products seeded")
+    print("✅ Products seeded (insert/update)")
