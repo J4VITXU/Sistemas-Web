@@ -36,8 +36,12 @@ export async function apiFetch<T>(
     ...options,
     headers,
   });
-
   if (!res.ok) {
+    if (res.status === 401) {
+      // Auto logout si el token no es válido
+      clearAuthToken();
+      window.location.href = "/login";
+    }
     const text = await res.text().catch(() => "");
     throw new Error(text || `HTTP ${res.status}`);
   }

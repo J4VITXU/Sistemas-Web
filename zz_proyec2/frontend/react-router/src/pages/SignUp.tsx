@@ -1,9 +1,10 @@
 // frontend/src/pages/SingUp.tsx
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { createUser } from "../api/users";
+import { createUser, login } from "../api/users";
 
-export default function SingUp() {
+
+export default function SignUp() {
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState("");
@@ -27,7 +28,8 @@ export default function SingUp() {
         email,
         password,
       });
-
+      // 2) Loguear usuario
+      await login(email, password); 
       // 3) Redirigir
       navigate("/");
     } catch (err: any) {

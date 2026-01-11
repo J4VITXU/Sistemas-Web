@@ -57,7 +57,7 @@ export default function Layout() {
               </NavLink>
 
               <NavLink
-                to="/singup"
+                to="/signup"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
                 }

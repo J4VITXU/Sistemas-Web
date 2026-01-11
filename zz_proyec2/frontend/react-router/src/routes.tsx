@@ -5,8 +5,8 @@ import DisplayProduct from "./pages/DisplayProducts";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
-import SingUp from "./pages/SingUp";
 import Orders from "./pages/Orders";
+import SignUp from "./pages/SignUp";
 
 /**
  * Route configuration for React Router.
@@ -26,8 +26,8 @@ export const routes = [
         element: <Login />,
       },
       {
-        path: "singup", // mantenemos tu nombre
-        element: <SingUp />,
+        path: "signup", 
+        element: <SignUp />,
       },
       {
         path: "products/:id",
