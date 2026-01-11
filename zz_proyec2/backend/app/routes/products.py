@@ -49,10 +49,9 @@ def get_product_by_slug(slug: str, session: SessionDep):
     return product
 
 
-# --- OPCIONAL: crear productos (para testear) ---
+# --- crear productos ---
 @router.post("/", response_model=ProductPublic, status_code=201)
 def create_product(product_in: ProductCreate, session: SessionDep):
-    # Asegurar slug único
     existing = session.exec(select(Product).where(Product.slug == product_in.slug)).first()
     if existing:
         raise HTTPException(status_code=400, detail="Slug already exists")
@@ -67,7 +66,7 @@ def create_product(product_in: ProductCreate, session: SessionDep):
     return product
 
 
-# --- OPCIONAL: actualizar producto ---
+# --- actualizar producto ---
 @router.patch("/{product_id}", response_model=ProductPublic)
 def update_product(product_id: int, product_in: ProductUpdate, session: SessionDep):
     product = session.get(Product, product_id)

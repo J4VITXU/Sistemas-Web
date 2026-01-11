@@ -57,8 +57,6 @@ def validate_checkout(payload: CheckoutValidateIn, session: SessionDep):
     invalid: List[InvalidItem] = []
     total_cents = 0
 
-    # Para evitar N queries, podríamos cargar todos los ids a la vez,
-    # pero para este proyecto va perfecto así.
     for item in payload.items:
         product = session.get(Product, item.product_id)
         if not product:
@@ -92,10 +90,6 @@ def validate_checkout(payload: CheckoutValidateIn, session: SessionDep):
                 currency=product.currency,
             )
         )
-
-    # Si quieres obligar a que todo sea válido para continuar:
-    # if invalid:
-    #     raise HTTPException(status_code=400, detail="Some items are invalid")
 
     currency = payload.currency or "USD"
     return CheckoutValidateOut(

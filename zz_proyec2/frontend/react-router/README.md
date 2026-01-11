@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# E-commerce SPA – React + FastAPI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Full-stack e-commerce application built as a **Single Page Application (SPA)** with a **React + TypeScript + Vite** frontend and a **FastAPI + SQLModel + SQLite** backend.
 
-Currently, two official plugins are available:
+The project includes product browsing, search, cart management, checkout with server-side validation, user authentication, and order history.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
+- React
+- TypeScript
+- Vite
+- React Router
+- Fetch API
+- JWT-based authentication
 
-## Expanding the ESLint configuration
+### Backend
+- Python
+- FastAPI
+- SQLModel
+- SQLite
+- JWT (Bearer Token)
+- OAuth2 Password Flow
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- `frontend/react-router/` – React SPA
+- `backend/` – FastAPI REST API
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Development setup
+
+### Backend
+
+From the `backend` directory:
+
+```bash
+fastapi dev app/main.py
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Optional: seed initial products
+python seed_products.py
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Frontend
+From the frontend/react-router directory:
+  yarn dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Backend API configuration (frontend)
+
+By default, the frontend communicates with the backend at:
+  http://localhost:8000
+
+The API base URL can be configured using the environment variable:
+  VITE_API_BASE_URL=http://localhost:8000 yarn dev
+
+Application features
+
+- Product catalog
+- Product search by text
+- Product detail view with quantity selection
+- Shopping cart with totals
+- Checkout with server-side validation
+- User registration and login
+- JWT token handling
+- Authenticated order history
+- Client-side routing with React Router
+
+### Routing (SPA)
+
+The application uses React Router for client-side navigation.
+
+Main routes include:
+- Home (product listing)
+- Product detail
+- Cart
+- Checkout
+- Login
+- Register
+- Orders (authenticated users only)
+
+### Authentication
+
+Authentication is handled using JWT tokens.
+- Tokens are stored in the browser
+- Authenticated requests include the header:
+  Authorization: Bearer <token>
+- Protected routes require the user to be logged in
+
+### Notes
+
+The project is intended for local development and educational purposes.
+The backend uses SQLite for simplicity.
+Business logic and validation are handled server-side.
+Frontend and backend are developed as independent applications.

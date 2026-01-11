@@ -3,13 +3,13 @@ from sqlmodel import select
 
 from app.dependencies import SessionDep
 from app.models.users import User, UserCreate, UserPublic
-from app.security import get_password_hash  # o donde tengas el hash
+from app.security import get_password_hash
 
 router = APIRouter(prefix="/users", tags=["users"])
 
 @router.post("/", response_model=UserPublic, status_code=201)
 def create_user(user: UserCreate, session: SessionDep):
-    # 1) comprobar email único (opcional pero recomendado)
+    # 1) comprobar email único
     existing = session.exec(select(User).where(User.email == user.email)).first()
     if existing:
         raise HTTPException(status_code=400, detail="Email already registered")
