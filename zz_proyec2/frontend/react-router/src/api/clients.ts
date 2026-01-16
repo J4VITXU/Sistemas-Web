@@ -1,5 +1,11 @@
 export const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+  import.meta.env.MODE === "development"
+    ? "http://localhost:8000"
+    : import.meta.env.VITE_API_BASE_URL;
+
+if (!API_BASE_URL) {
+  throw new Error("VITE_API_BASE_URL is not defined");
+}
 
 export function setAuthToken(token: string) {
   localStorage.setItem("token", token);
