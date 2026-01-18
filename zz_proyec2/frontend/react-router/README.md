@@ -141,6 +141,10 @@ For this reason, the project includes a `vercel.json` file that rewrites
 all routes to `/`, allowing React Router to correctly resolve the view
 on page reloads.
 
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
+### Note: 
+The backend is hosted on Render and may take a few seconds
+to respond on the first request due to cold start.
+
+![Rendel](image.png)
+![Home Web Online](image-1.png)
+![Venncel](image-2.png)
