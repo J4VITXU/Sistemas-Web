@@ -1,5 +1,7 @@
 # E-commerce SPA – React + FastAPI
 
+🔗 **Live demo:** https://sistemas-web-git-main-javitxus-projects.vercel.app/
+
 Full-stack e-commerce application built as a **Single Page Application (SPA)** with a **React + TypeScript + Vite** frontend and a **FastAPI + SQLModel + SQLite** backend.
 
 The project includes product browsing, search, cart management, checkout with server-side validation, user authentication, and order history.
@@ -138,10 +140,6 @@ all incoming requests to the main entry point of the application.
 For this reason, the project includes a `vercel.json` file that rewrites
 all routes to `/`, allowing React Router to correctly resolve the view
 on page reloads.
-
-# E-commerce SPA – React + FastAPI
-
-🔗 **Live demo:** https://sistemas-web-git-main-javitxus-projects.vercel.app/
 
 ![alt text](image.png)
 ![alt text](image-1.png)
