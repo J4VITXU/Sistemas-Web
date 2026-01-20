@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { listProducts } from "../api/products";
 import type { Product } from "../models/products";
 
+import "./Home.css";
+
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -12,7 +14,6 @@ export default function Home() {
 
   useEffect(() => {
     fetchProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function fetchProducts(q?: string) {
@@ -34,58 +35,64 @@ export default function Home() {
   }
 
   if (loading) {
-    return <p style={{ padding: 16 }}>Loading products…</p>;
+    return (
+      <div className="home">
+        <div className="home__container">
+          <p className="home__state">Loading products…</p>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
     return (
-      <div style={{ padding: 16, color: "red" }}>
-        Error: {error}
+      <div className="home">
+        <div className="home__container">
+          <div className="home__state home__state--error">Error: {error}</div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: 16 }}>
-      <h1>Products</h1>
+    <div className="home">
+      <div className="home__container">
+        <h1 className="home__title">Products</h1>
 
-      <form onSubmit={handleSearch} style={{ margin: "16px 0" }}>
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          style={{ padding: 8, marginRight: 8 }}
-        />
-        <button type="submit">Search</button>
-      </form>
+        <div className="home__toolbar">
+          <form className="search" onSubmit={handleSearch}>
+            <input
+              className="search__input"
+              type="text"
+              placeholder="Search products..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <button className="search__button" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
 
-      {products.length === 0 ? (
-        <p>No products found</p>
-      ) : (
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          {products.map((p) => (
-            <li
-              key={p.id}
-              style={{
-                border: "1px solid #ddd",
-                borderRadius: 8,
-                padding: 12,
-                marginBottom: 12,
-              }}
-            >
-              <h3>{p.title}</h3>
-              <p>{p.description}</p>
-              <p>
-                <strong>
+        {products.length === 0 ? (
+          <p className="home__state">No products found</p>
+        ) : (
+          <ul className="grid" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+            {products.map((p) => (
+              <li key={p.id} className="card">
+                <h3 className="card__title">{p.title}</h3>
+                <p className="card__desc">{p.description}</p>
+                <p className="card__price">
                   {(p.price_cents / 100).toFixed(2)} {p.currency}
-                </strong>
-              </p>
-              <Link to={`/products/${p.id}`}>View details</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+                </p>
+                <Link className="card__link" to={`/products/${p.id}`}>
+                  View details →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }

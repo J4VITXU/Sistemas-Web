@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../api/users";
 
+import "./Login.css";
+
 export default function Login() {
   const navigate = useNavigate();
 
@@ -18,7 +20,7 @@ export default function Login() {
 
     try {
       await login(email, password);
-      navigate("/"); // o "/orders" si quieres llevarlo directo
+      navigate("/");
     } catch (err: any) {
       setError(err?.message || "Login failed");
     } finally {
@@ -27,46 +29,44 @@ export default function Login() {
   }
 
   return (
-    <div style={{ maxWidth: 420, margin: "40px auto", padding: 16 }}>
-      <h1>Login</h1>
+    <div className="login">
+      <div className="login__card">
+        <h1 className="login__title">Login</h1>
 
-      {error && (
-        <div style={{ background: "#fee", border: "1px solid #f99", padding: 12, borderRadius: 8, marginBottom: 12 }}>
-          {error}
-        </div>
-      )}
+        {error && <div className="login__error">{error}</div>}
 
-      <form onSubmit={handleSubmit}>
-        <label style={{ display: "block", marginBottom: 6 }}>Email</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={{ width: "100%", padding: 10, marginBottom: 12 }}
-        />
+        <form className="login__form" onSubmit={handleSubmit}>
+          <label className="login__label">Email</label>
+          <input
+            className="login__input"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <label style={{ display: "block", marginBottom: 6 }}>Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{ width: "100%", padding: 10, marginBottom: 16 }}
-        />
+          <label className="login__label">Password</label>
+          <input
+            className="login__input"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-        <button
-          type="submit"
-          disabled={loading}
-          style={{ width: "100%", padding: 12 }}
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
+          <button
+            className="login__button"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
 
-      <p style={{ marginTop: 12 }}>
-        No account? <Link to="/signup">Sign up</Link>
-      </p>
+        <p className="login__footer">
+          No account? <Link to="/signup">Sign up</Link>
+        </p>
+      </div>
     </div>
   );
 }

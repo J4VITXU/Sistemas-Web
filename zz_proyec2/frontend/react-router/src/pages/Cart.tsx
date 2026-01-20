@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import type { Product } from "../models/products";
 import { getProduct } from "../api/products";
 
+import "./Cart.css";
+
 type CartItem = {
   product_id: number;
   quantity: number;
@@ -85,82 +87,120 @@ export default function Cart() {
     }, 0);
   }, [items, products]);
 
-  if (loading) return <p style={{ padding: 16 }}>Loading cart…</p>;
+  if (loading) {
+    return (
+      <div className="cart">
+        <div className="cart__container">
+          <div className="cart__state">Loading cart…</div>
+        </div>
+      </div>
+    );
+  }
 
   if (error) {
     return (
-      <div style={{ padding: 16 }}>
-        <p style={{ color: "red" }}>Error: {error}</p>
-        <Link to="/">Back</Link>
+      <div className="cart">
+        <div className="cart__container">
+          <div className="cart__state cart__state--error">Error: {error}</div>
+          <div style={{ marginTop: 10 }}>
+            <Link to="/">Back</Link>
+          </div>
+        </div>
       </div>
     );
   }
 
   if (items.length === 0) {
     return (
-      <div style={{ padding: 16 }}>
-        <h1>Cart</h1>
-        <p>Your cart is empty.</p>
-        <Link to="/">Go shopping</Link>
+      <div className="cart">
+        <div className="cart__container">
+          <h1 className="cart__title">Cart</h1>
+          <div className="cart__state">
+            <p style={{ margin: 0 }}>Your cart is empty.</p>
+            <div style={{ marginTop: 8 }}>
+              <Link to="/">Go shopping</Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: 16, maxWidth: 900 }}>
-      <h1>Cart</h1>
+    <div className="cart">
+      <div className="cart__container">
+        <h1 className="cart__title">Cart</h1>
 
-      {items.map((item) => {
-        const product = products.find((p) => p.id === item.product_id);
-        if (!product) return null;
+        <div className="cart__list">
+          {items.map((item) => {
+            const product = products.find((p) => p.id === item.product_id);
+            if (!product) return null;
 
-        return (
-          <div
-            key={product.id}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: 10,
-              padding: 12,
-              marginBottom: 12,
-            }}
-          >
-            <h3>{product.title}</h3>
-            <p>
-              {(product.price_cents / 100).toFixed(2)} {product.currency}
+            return (
+              <div key={product.id} className="cartItem">
+                <div>
+                  <h3 className="cartItem__title">{product.title}</h3>
+                  <p className="cartItem__price">
+                    {(product.price_cents / 100).toFixed(2)} {product.currency}
+                  </p>
+
+                  <div className="cartItem__controls">
+                    <label className="cartItem__qtyLabel">
+                      Qty:
+                      <input
+                        className="cartItem__qtyInput"
+                        type="number"
+                        min={0}
+                        max={product.stock}
+                        value={item.quantity}
+                        onChange={(e) =>
+                          updateQty(product.id, Number(e.target.value))
+                        }
+                      />
+                    </label>
+
+                    <button
+                      className="cartItem__remove"
+                      onClick={() => removeItem(product.id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="cartItem__subtotal">
+                    Subtotal:{" "}
+                    <strong>
+                      {((product.price_cents * item.quantity) / 100).toFixed(2)}{" "}
+                      {product.currency}
+                    </strong>
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="cart__footer">
+          <button className="cart__clear" onClick={clearCart}>
+            Clear cart
+          </button>
+
+          <div className="cart__summary">
+            <p className="cart__summaryRow">
+              <span className="cart__totalLabel">Total</span>
+              <span className="cart__totalValue">
+                {(totalCents / 100).toFixed(2)}
+              </span>
             </p>
-
-            <label>
-              Qty:{" "}
-              <input
-                type="number"
-                min={0}
-                max={product.stock}
-                value={item.quantity}
-                onChange={(e) => updateQty(product.id, Number(e.target.value))}
-              />
-            </label>
-
-            <p>
-              Subtotal:{" "}
-              <strong>
-                {((product.price_cents * item.quantity) / 100).toFixed(2)}{" "}
-                {product.currency}
-              </strong>
-            </p>
-
-            <button onClick={() => removeItem(product.id)}>Remove</button>
+            <button
+              className="cart__checkout"
+              onClick={() => navigate("/checkout")}
+            >
+              Checkout
+            </button>
           </div>
-        );
-      })}
-
-      <div style={{ marginTop: 20, display: "flex", justifyContent: "space-between" }}>
-        <button onClick={clearCart}>Clear cart</button>
-
-        <div style={{ textAlign: "right" }}>
-          <p style={{ fontSize: 18 }}>
-            Total: <strong>{(totalCents / 100).toFixed(2)}</strong>
-          </p>
-          <button onClick={() => navigate("/checkout")}>Checkout</button>
         </div>
       </div>
     </div>

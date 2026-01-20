@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { createUser, login } from "../api/users";
 
+import "./SignUp.css";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -20,16 +21,14 @@ export default function SignUp() {
     setLoading(true);
 
     try {
-      // 1) Registrar usuario
       await createUser({
         first_name: firstName,
         last_name: lastName,
         email,
         password,
       });
-      // 2) Loguear usuario
-      await login(email, password); 
-      // 3) Redirigir
+
+      await login(email, password);
       navigate("/");
     } catch (err: any) {
       setError(err?.message || "Sign up failed");
@@ -39,86 +38,63 @@ export default function SignUp() {
   }
 
   return (
-    <div style={{ maxWidth: 420, margin: "40px auto", padding: 16 }}>
-      <h2 style={{ marginBottom: 16 }}>Create account</h2>
+    <div className="signup">
+      <div className="signup__card">
+        <h2 className="signup__title">Create account</h2>
 
-      {error && (
-        <div
-          style={{
-            background: "#ffe5e5",
-            border: "1px solid #ffb3b3",
-            padding: 10,
-            borderRadius: 8,
-            marginBottom: 12,
-          }}
-        >
-          {error}
-        </div>
-      )}
+        {error && <div className="signup__error">{error}</div>}
 
-      <form onSubmit={handleSubmit} style={{ display: "grid", gap: 12 }}>
-        <label style={{ display: "grid", gap: 6 }}>
-          <span>First name</span>
+        <form className="signup__form" onSubmit={handleSubmit}>
+          <label className="signup__label">First name</label>
           <input
+            className="signup__input"
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
-            style={{ padding: 10, borderRadius: 8, border: "1px solid #ccc" }}
           />
-        </label>
 
-        <label style={{ display: "grid", gap: 6 }}>
-          <span>Last name</span>
+          <label className="signup__label">Last name</label>
           <input
+            className="signup__input"
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
-            style={{ padding: 10, borderRadius: 8, border: "1px solid #ccc" }}
           />
-        </label>
 
-        <label style={{ display: "grid", gap: 6 }}>
-          <span>Email</span>
+          <label className="signup__label">Email</label>
           <input
+            className="signup__input"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
             placeholder="you@example.com"
-            style={{ padding: 10, borderRadius: 8, border: "1px solid #ccc" }}
+            required
           />
-        </label>
 
-        <label style={{ display: "grid", gap: 6 }}>
-          <span>Password</span>
+          <label className="signup__label">Password</label>
           <input
+            className="signup__input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            style={{ padding: 10, borderRadius: 8, border: "1px solid #ccc" }}
           />
-        </label>
 
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            padding: 12,
-            borderRadius: 10,
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          {loading ? "Creating account..." : "Sign up"}
-        </button>
-      </form>
+          <button
+            className="signup__button"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Creating account..." : "Sign up"}
+          </button>
+        </form>
 
-      <p style={{ marginTop: 14 }}>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
+        <p className="signup__footer">
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </div>
     </div>
   );
 }

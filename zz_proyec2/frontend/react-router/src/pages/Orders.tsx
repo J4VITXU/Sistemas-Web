@@ -4,6 +4,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAuthToken } from "../api/clients";
 import { listOrders, type Order } from "../api/orders";
 
+import "./Orders.css";
+
+function statusClass(status: string) {
+  const s = status.toLowerCase();
+  if (["paid", "completed", "delivered", "success"].some((k) => s.includes(k))) {
+    return "badge badge--success";
+  }
+  if (["pending", "processing", "unpaid"].some((k) => s.includes(k))) {
+    return "badge badge--warn";
+  }
+  return "badge badge--neutral";
+}
+
 export default function Orders() {
   const navigate = useNavigate();
 
@@ -34,52 +47,70 @@ export default function Orders() {
     load();
   }, [navigate]);
 
-  if (loading) return <p style={{ padding: 16 }}>Loading orders…</p>;
+  if (loading) {
+    return (
+      <div className="orders">
+        <div className="orders__container">
+          <div className="orders__state">Loading orders…</div>
+        </div>
+      </div>
+    );
+  }
 
   if (error) {
     return (
-      <div style={{ padding: 16 }}>
-        <p style={{ color: "red" }}>Error: {error}</p>
-        <Link to="/">← Back</Link>
+      <div className="orders">
+        <div className="orders__container">
+          <div className="orders__state orders__state--error">Error: {error}</div>
+          <div style={{ marginTop: 10 }}>
+            <Link className="orders__back" to="/">
+              ← Back
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: 16, maxWidth: 900 }}>
-      <h1>My Orders</h1>
-      <Link to="/">← Back to products</Link>
+    <div className="orders">
+      <div className="orders__container">
+        <h1 className="orders__title">My Orders</h1>
+        <Link className="orders__back" to="/">
+          ← Back to products
+        </Link>
 
-      {orders.length === 0 ? (
-        <p style={{ marginTop: 16 }}>No orders yet.</p>
-      ) : (
-        <div style={{ display: "grid", gap: 14, marginTop: 16 }}>
-          {orders.map((o) => (
-            <div
-              key={o.id}
-              style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12 }}
-            >
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-                <strong>Order #{o.id}</strong>
-                <span style={{ opacity: 0.8 }}>
-                  {new Date(o.created_at).toLocaleString()}
-                </span>
-              </div>
+        {orders.length === 0 ? (
+          <div className="orders__state" style={{ marginTop: 12 }}>
+            No orders yet.
+          </div>
+        ) : (
+          <div className="orders__grid">
+            {orders.map((o) => (
+              <div key={o.id} className="orderCard">
+                <div className="orderCard__top">
+                  <span className="orderCard__id">Order #{o.id}</span>
+                  <span className="orderCard__date">
+                    {new Date(o.created_at).toLocaleString()}
+                  </span>
+                </div>
 
-              <div style={{ marginTop: 6, opacity: 0.9 }}>
-                Status: <strong>{o.status}</strong>
-              </div>
+                <div className="orderCard__meta">
+                  <span>
+                    Status:{" "}
+                    <span className={statusClass(o.status)}>{o.status}</span>
+                  </span>
 
-              <div style={{ marginTop: 6 }}>
-                Total:{" "}
-                <strong>
-                  {(o.total_cents / 100).toFixed(2)} {o.currency}
-                </strong>
-              </div>
+                  <span>
+                    Total:{" "}
+                    <strong>
+                      {(o.total_cents / 100).toFixed(2)} {o.currency}
+                    </strong>
+                  </span>
+                </div>
 
-              <div style={{ marginTop: 10 }}>
-                <strong>Items</strong>
-                <ul style={{ marginTop: 6 }}>
+                <div className="orderCard__itemsTitle">Items</div>
+                <ul className="orderCard__items">
                   {o.items.map((it) => (
                     <li key={it.id}>
                       Product #{it.product_id} — qty {it.quantity} — unit{" "}
@@ -88,10 +119,10 @@ export default function Orders() {
                   ))}
                 </ul>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

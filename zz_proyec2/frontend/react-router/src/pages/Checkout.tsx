@@ -5,6 +5,8 @@ import { getAuthToken } from "../api/clients";
 import { validateCheckout, type CheckoutValidateOut } from "../api/checkout";
 import { createOrder } from "../api/orders";
 
+import "./Checkout.css";
+
 type CartItem = {
   product_id: number;
   quantity: number;
@@ -81,7 +83,10 @@ export default function Checkout() {
     setConfirming(true);
     try {
       const payload = {
-        items: result.items.map((i) => ({ product_id: i.product_id, quantity: i.quantity })),
+        items: result.items.map((i) => ({
+          product_id: i.product_id,
+          quantity: i.quantity,
+        })),
         currency: result.currency,
       };
 
@@ -96,100 +101,137 @@ export default function Checkout() {
     }
   }
 
-  if (loading) return <p style={{ padding: 16 }}>Validating checkout…</p>;
+  if (loading) {
+    return (
+      <div className="checkout">
+        <div className="checkout__container">
+          <div className="checkout__state">Validating checkout…</div>
+        </div>
+      </div>
+    );
+  }
 
   if (error) {
     return (
-      <div style={{ padding: 16 }}>
-        <p style={{ color: "red" }}>Error: {error}</p>
-        <Link to="/cart">← Back to cart</Link>
+      <div className="checkout">
+        <div className="checkout__container">
+          <div className="checkout__state checkout__state--error">
+            Error: {error}
+          </div>
+          <div style={{ marginTop: 10 }}>
+            <Link className="checkout__back" to="/cart">
+              ← Back to cart
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
 
   if (cartItems.length === 0) {
     return (
-      <div style={{ padding: 16 }}>
-        <h1>Checkout</h1>
-        <p>Your cart is empty.</p>
-        <Link to="/">Go shopping</Link>
+      <div className="checkout">
+        <div className="checkout__container">
+          <h1 className="checkout__title">Checkout</h1>
+          <div className="checkout__state">
+            <p style={{ margin: 0 }}>Your cart is empty.</p>
+            <div style={{ marginTop: 8 }}>
+              <Link className="checkout__back" to="/">
+                Go shopping
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: 16, maxWidth: 900 }}>
-      <h1>Checkout</h1>
+    <div className="checkout">
+      <div className="checkout__container">
+        <h1 className="checkout__title">Checkout</h1>
 
-      <Link to="/cart">← Back to cart</Link>
+        <Link className="checkout__back" to="/cart">
+          ← Back to cart
+        </Link>
 
-      {!result ? (
-        <p>Could not validate cart.</p>
-      ) : (
-        <>
-          <h3 style={{ marginTop: 16 }}>Validated items</h3>
+        {!result ? (
+          <div className="checkout__state">Could not validate cart.</div>
+        ) : (
+          <>
+            <div className="checkout__grid">
+              <div>
+                <h3 className="checkout__sectionTitle">Validated items</h3>
 
-          {result.items.length === 0 ? (
-            <p>No valid items.</p>
-          ) : (
-            <div style={{ display: "grid", gap: 12 }}>
-              {result.items.map((it) => (
-                <div
-                  key={it.product_id}
-                  style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12 }}
-                >
-                  <strong>{it.title}</strong>
-                  <div style={{ opacity: 0.8, marginTop: 6 }}>
-                    Qty: {it.quantity} · Unit: {(it.unit_price_cents / 100).toFixed(2)}{" "}
-                    {it.currency} · Subtotal: {(it.subtotal_cents / 100).toFixed(2)} {it.currency}
+                {result.items.length === 0 ? (
+                  <div className="checkout__state">No valid items.</div>
+                ) : (
+                  <div className="checkout__items">
+                    {result.items.map((it) => (
+                      <div key={it.product_id} className="itemCard">
+                        <p className="itemCard__title">{it.title}</p>
+
+                        <div className="itemCard__meta">
+                          Qty: {it.quantity} · Unit:{" "}
+                          {(it.unit_price_cents / 100).toFixed(2)} {it.currency}
+                          {" · "}
+                          Subtotal:{" "}
+                          {(it.subtotal_cents / 100).toFixed(2)} {it.currency}
+                        </div>
+
+                        <div className="itemCard__stock">
+                          Stock available: {it.stock_available}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <div style={{ fontSize: 12, opacity: 0.7, marginTop: 6 }}>
-                    Stock available: {it.stock_available}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+                )}
 
-          {result.invalid_items.length > 0 && (
-            <>
-              <h3 style={{ marginTop: 16 }}>Invalid items</h3>
-              <ul>
-                {result.invalid_items.map((it) => (
-                  <li key={`${it.product_id}-${it.reason}`}>
-                    Product #{it.product_id} (qty {it.quantity}) — {it.reason}
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-
-          <div style={{ marginTop: 18, display: "flex", justifyContent: "space-between" }}>
-            <div>
-              <p style={{ margin: 0, fontSize: 18 }}>
-                Total:{" "}
-                <strong>
-                  {(result.total_cents / 100).toFixed(2)} {result.currency}
-                </strong>
-              </p>
-            </div>
-
-            <div style={{ textAlign: "right" }}>
-              {confirmError && (
-                <div style={{ color: "red", marginBottom: 8 }}>{confirmError}</div>
-              )}
-
-              <button onClick={handleConfirmOrder} disabled={confirming}>
-                {confirming ? "Creating order…" : "Confirm order"}
-              </button>
-
-              <div style={{ marginTop: 8, fontSize: 12, opacity: 0.8 }}>
-                You must be logged in to confirm.
+                {result.invalid_items.length > 0 && (
+                  <>
+                    <h3 className="checkout__sectionTitle">Invalid items</h3>
+                    <div className="invalidBox">
+                      <ul className="invalidBox__list">
+                        {result.invalid_items.map((it) => (
+                          <li key={`${it.product_id}-${it.reason}`}>
+                            Product #{it.product_id} (qty {it.quantity}) —{" "}
+                            {it.reason}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                )}
               </div>
+
+              <aside className="summary">
+                <p className="summary__row">
+                  <span className="summary__label">Total</span>
+                  <span className="summary__value">
+                    {(result.total_cents / 100).toFixed(2)} {result.currency}
+                  </span>
+                </p>
+
+                {confirmError && (
+                  <div className="summary__error">{confirmError}</div>
+                )}
+
+                <button
+                  className="summary__button"
+                  onClick={handleConfirmOrder}
+                  disabled={confirming}
+                >
+                  {confirming ? "Creating order…" : "Confirm order"}
+                </button>
+
+                <div className="summary__hint">
+                  You must be logged in to confirm.
+                </div>
+              </aside>
             </div>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 }
