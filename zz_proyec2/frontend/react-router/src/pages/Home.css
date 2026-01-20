@@ -128,19 +128,6 @@
   color: var(--text);
 }
 
-.card__desc {
-  margin: 0 0 12px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.45;
-
-  /* corta texto largo sin romper la card */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
 .card__price {
   margin: 0 0 10px;
   font-weight: 800;
