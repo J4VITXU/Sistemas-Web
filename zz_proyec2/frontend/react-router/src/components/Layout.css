@@ -42,10 +42,28 @@
 }
 
 .nav-button {
-  background: none;
-  border: none;
-  font: inherit; 
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: transparent;
+  border: 0;
+  outline: none;
+
+  
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: inherit;
+
+  color: white;
   cursor: pointer;
+
+
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+
+  transition: background-color 0.2s;
 }
 
 .nav-button:hover {

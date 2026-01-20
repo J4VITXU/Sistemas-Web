@@ -68,7 +68,7 @@ export default function Layout() {
           ) : (
             <button
               onClick={handleLogout}
-              className="nav-link logout-button"
+              className="nav-link nav-button"
             >
               Logout
             </button>
