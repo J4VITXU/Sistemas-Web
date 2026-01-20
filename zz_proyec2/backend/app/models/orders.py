@@ -1,12 +1,10 @@
-# backend/app/models/orders.py
-
 from datetime import datetime
 from typing import Optional, List
 
 from sqlmodel import SQLModel, Field, Relationship
 
 
-# ---------- Order (tabla) ----------
+# Order (tabla) 
 
 class OrderBase(SQLModel):
     status: str = Field(default="pending")  # "pending", "paid", "cancelled"
@@ -24,7 +22,7 @@ class Order(OrderBase, table=True):
     items: List["OrderItem"] = Relationship(back_populates="order")
 
 
-# ---------- OrderItem (tabla) ----------
+# OrderItem (tabla)
 
 class OrderItemBase(SQLModel):
     unit_price_cents: int = Field(ge=0)
@@ -41,7 +39,7 @@ class OrderItem(OrderItemBase, table=True):
     order: Optional[Order] = Relationship(back_populates="items")
 
 
-# ---------- Schemas (no tabla) para requests/responses ----------
+# Schemas (no tabla) para requests/responses
 
 class OrderItemCreate(SQLModel):
     product_id: int

@@ -1,4 +1,3 @@
-// frontend/src/pages/SingUp.tsx
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { createUser, login } from "../api/users";

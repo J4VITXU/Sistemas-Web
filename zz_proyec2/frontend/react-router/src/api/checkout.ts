@@ -1,4 +1,3 @@
-// frontend/src/api/checkout.ts
 import { apiFetch } from "./clients";
 
 export type CheckoutValidateIn = {

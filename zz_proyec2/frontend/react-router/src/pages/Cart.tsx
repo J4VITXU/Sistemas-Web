@@ -1,4 +1,3 @@
-// frontend/src/pages/Cart.tsx
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 

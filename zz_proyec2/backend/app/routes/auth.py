@@ -7,7 +7,6 @@ from jose import jwt, JWTError
 from passlib.context import CryptContext
 from sqlmodel import select
 
-from app.db import engine
 from app.dependencies import SessionDep
 from app.models.users import User
 from app.config import settings

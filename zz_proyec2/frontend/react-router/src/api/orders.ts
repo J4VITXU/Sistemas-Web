@@ -1,4 +1,3 @@
-// frontend/src/api/orders.ts
 import { apiFetch } from "./clients";
 
 export type OrderCreateIn = {

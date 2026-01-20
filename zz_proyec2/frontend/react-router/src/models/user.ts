@@ -1,4 +1,3 @@
-// frontend/src/models/users.ts
 
 export type User = {
   id: number;

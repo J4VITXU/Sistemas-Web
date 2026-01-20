@@ -6,7 +6,7 @@ from typing import Optional
 from sqlmodel import SQLModel, Field
 
 
-# ---------- Base ----------
+# Base
 class UserBase(SQLModel):
     first_name: str
     last_name: str
@@ -14,14 +14,14 @@ class UserBase(SQLModel):
     is_admin: bool = Field(default=False)
 
 
-# ---------- Tabla ----------
+# Tabla
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     password_hash: str
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 
-# ---------- Schemas ----------
+# Schemas
 class UserPublic(UserBase):
     id: int
     created_at: datetime

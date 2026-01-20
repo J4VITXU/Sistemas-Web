@@ -1,4 +1,3 @@
-# backend/app/routes/checkout.py
 from __future__ import annotations
 
 from typing import List, Optional
@@ -13,7 +12,7 @@ from app.models.products import Product
 router = APIRouter(prefix="/checkout", tags=["checkout"])
 
 
-# ----- Input -----
+# Input
 class CartItemIn(BaseModel):
     product_id: int
     quantity: int = Field(ge=1)
@@ -24,7 +23,7 @@ class CheckoutValidateIn(BaseModel):
     currency: Optional[str] = "USD"
 
 
-# ----- Output -----
+# Output
 class ValidatedItem(BaseModel):
     product_id: int
     title: str

@@ -1,4 +1,3 @@
-// frontend/src/api/users.ts
 import { apiFetch, setAuthToken, clearAuthToken } from "./clients";
 import type { User } from "../models/user";
 
@@ -15,7 +14,7 @@ export async function createUser(payload: {
 }
 
 
-// -------- LOGIN --------
+// LOGIN
 export async function login(email: string, password: string): Promise<void> {
   const body = new URLSearchParams();
   body.set("username", email);
@@ -35,7 +34,7 @@ export async function login(email: string, password: string): Promise<void> {
   setAuthToken(res.access_token);
 }
 
-// -------- LOGOUT --------
+// LOGOUT
 export function logout() {
   clearAuthToken();
 }

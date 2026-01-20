@@ -1,4 +1,3 @@
-# backend/app/routes/products.py
 from __future__ import annotations
 
 from datetime import datetime
@@ -49,7 +48,7 @@ def get_product_by_slug(slug: str, session: SessionDep):
     return product
 
 
-# --- crear productos ---
+# crear productos
 @router.post("/", response_model=ProductPublic, status_code=201)
 def create_product(product_in: ProductCreate, session: SessionDep):
     existing = session.exec(select(Product).where(Product.slug == product_in.slug)).first()
@@ -66,7 +65,7 @@ def create_product(product_in: ProductCreate, session: SessionDep):
     return product
 
 
-# --- actualizar producto ---
+# actualizar producto
 @router.patch("/{product_id}", response_model=ProductPublic)
 def update_product(product_id: int, product_in: ProductUpdate, session: SessionDep):
     product = session.get(Product, product_id)

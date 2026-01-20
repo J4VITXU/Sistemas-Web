@@ -8,10 +8,6 @@ import Login from "./pages/Login";
 import Orders from "./pages/Orders";
 import SignUp from "./pages/SignUp";
 
-/**
- * Route configuration for React Router.
- * Uses Layout as a wrapper and renders pages inside <Outlet />
- */
 export const routes = [
   {
     path: "/",

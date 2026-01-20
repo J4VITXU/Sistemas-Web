@@ -1,4 +1,3 @@
-// frontend/src/models/products.ts
 
 export type Product = {
   id: number;

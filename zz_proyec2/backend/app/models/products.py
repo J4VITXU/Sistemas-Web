@@ -1,4 +1,3 @@
-# backend/app/models/products.py
 from __future__ import annotations
 
 from datetime import datetime
@@ -7,7 +6,7 @@ from typing import Optional
 from sqlmodel import SQLModel, Field
 
 
-# --------- Tabla Product ---------
+# Tabla Product
 
 class ProductBase(SQLModel):
     title: str = Field(min_length=1)
@@ -25,7 +24,7 @@ class Product(ProductBase, table=True):
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
 
-# --------- Schemas (no tabla) ---------
+# Schemas (no tabla)
 
 class ProductCreate(ProductBase):
     pass
